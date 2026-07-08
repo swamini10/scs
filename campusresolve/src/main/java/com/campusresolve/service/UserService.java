@@ -18,6 +18,10 @@ public class UserService {
     // Register User
     public User registerUser(RegisterRequest request) {
 
+        if (request == null) {
+            throw new RuntimeException("Request cannot be null");
+        }
+
         if (userRepository.existsByEmail(request.getEmail())) {
             throw new RuntimeException("Email already exists");
         }
@@ -36,8 +40,19 @@ public class UserService {
     // Login User
     public User login(String email, String password) {
 
-        User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("Invalid Email"));
+        if (email == null || email.trim().isEmpty()) {
+            throw new RuntimeException("Email is required");
+        }
+
+        if (password == null || password.trim().isEmpty()) {
+            throw new RuntimeException("Password is required");
+        }
+
+        User user = userRepository.findByEmail(email).orElse(null);
+
+        if (user == null) {
+            throw new RuntimeException("Invalid Email");
+        }
 
         if (!user.getPassword().equals(password)) {
             throw new RuntimeException("Invalid Password");
@@ -48,14 +63,29 @@ public class UserService {
 
     // Get User By Id
     public User getUserById(Long id) {
-        return userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        if (id == null) {
+            throw new RuntimeException("User Id cannot be null");
+        }
+
+        User user = userRepository.findById(id).orElse(null);
+
+        if (user == null) {
+            throw new RuntimeException("User not found");
+        }
+
+        return user;
     }
 
     // Get All Users
     public List<User> getAllUsers() {
 
-        return userRepository.findAll();
-    }
+        List<User> users = userRepository.findAll();
 
+        if (users.isEmpty()) {
+            throw new RuntimeException("No users found");
+        }
+
+        return users;
+    }
 }
