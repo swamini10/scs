@@ -15,4 +15,6 @@ public interface ComplaintRepository extends JpaRepository<Complaint, Long> {
 
     List<Complaint> findByStatus(ComplaintStatus status);
 
+    long countByStatus(ComplaintStatus status);
+
 }

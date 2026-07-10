@@ -89,5 +89,13 @@ public class ComplaintService {
         } else {
             throw new RuntimeException("Complaint not found");
         }
+
     }
+    // Total Complaints
+    public long getTotalComplaints() {
+
+        return complaintRepository.count();
+
+    }
+
 }
