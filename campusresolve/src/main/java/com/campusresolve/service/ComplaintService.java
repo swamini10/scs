@@ -2,6 +2,7 @@ package com.campusresolve.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,26 +26,38 @@ public class ComplaintService {
     // Raise Complaint
     public Complaint raiseComplaint(Long userId, ComplaintRequest request) {
 
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+        Optional<User> optionalUser = userRepository.findById(userId);
 
-        Complaint complaint = new Complaint();
+        if (optionalUser.isPresent()) {
 
-        complaint.setTitle(request.getTitle());
-        complaint.setDescription(request.getDescription());
-        complaint.setStatus(ComplaintStatus.PENDING);
-        complaint.setCreatedAt(LocalDateTime.now());
-        complaint.setUpdatedAt(null);
-        complaint.setUser(user);
+            User user = optionalUser.get();
 
-        return complaintRepository.save(complaint);
+            Complaint complaint = new Complaint();
+
+            complaint.setTitle(request.getTitle());
+            complaint.setDescription(request.getDescription());
+            complaint.setStatus(ComplaintStatus.PENDING);
+            complaint.setCreatedAt(LocalDateTime.now());
+            complaint.setUpdatedAt(null);
+            complaint.setUser(user);
+
+            return complaintRepository.save(complaint);
+
+        } else {
+            throw new RuntimeException("User not found");
+        }
     }
 
     // Get Complaint By Id
     public Complaint getComplaintById(Long id) {
 
-        return complaintRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Complaint not found"));
+        Optional<Complaint> optionalComplaint = complaintRepository.findById(id);
+
+        if (optionalComplaint.isPresent()) {
+            return optionalComplaint.get();
+        } else {
+            throw new RuntimeException("Complaint not found");
+        }
     }
 
     // Student - My Complaints
@@ -62,12 +75,19 @@ public class ComplaintService {
     // Admin - Update Status
     public Complaint updateStatus(Long id, ComplaintStatus status) {
 
-        Complaint complaint = complaintRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Complaint not found"));
+        Optional<Complaint> optionalComplaint = complaintRepository.findById(id);
 
-        complaint.setStatus(status);
-        complaint.setUpdatedAt(LocalDateTime.now());
+        if (optionalComplaint.isPresent()) {
 
-        return complaintRepository.save(complaint);
+            Complaint complaint = optionalComplaint.get();
+
+            complaint.setStatus(status);
+            complaint.setUpdatedAt(LocalDateTime.now());
+
+            return complaintRepository.save(complaint);
+
+        } else {
+            throw new RuntimeException("Complaint not found");
+        }
     }
 }
