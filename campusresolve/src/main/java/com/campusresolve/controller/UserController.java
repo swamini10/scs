@@ -2,6 +2,7 @@ package com.campusresolve.controller;
 
 import java.util.List;
 
+import com.campusresolve.dto.LoginResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.campusresolve.dto.RegisterRequest;
@@ -26,8 +27,11 @@ public class UserController {
 
     // Login User
     @PostMapping("/login")
-    public User loginUser(@RequestBody LoginRequest request) {
-        return userService.login(request.getEmail(), request.getPassword());
+    public LoginResponse loginUser(@RequestBody LoginRequest request) {
+
+        return userService.login(
+                request.getEmail(),
+                request.getPassword());
 
     }
 

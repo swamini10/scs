@@ -2,15 +2,19 @@ package com.campusresolve.service;
 
 import java.util.List;
 
+import com.campusresolve.dto.LoginResponse;
 import com.campusresolve.dto.RegisterRequest;
+import com.campusresolve.security.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.campusresolve.entity.User;
 import com.campusresolve.repository.UserRepository;
 
 @Service
 public class UserService {
+
+    @Autowired
+    private JwtUtil jwtUtil;
 
     @Autowired
     private UserRepository userRepository;
@@ -38,7 +42,7 @@ public class UserService {
     }
 
     // Login User
-    public User login(String email, String password) {
+    public LoginResponse login(String email, String password) {
 
         if (email == null || email.trim().isEmpty()) {
             throw new RuntimeException("Email is required");
@@ -58,7 +62,18 @@ public class UserService {
             throw new RuntimeException("Invalid Password");
         }
 
-        return user;
+        String token = jwtUtil.generateToken(user.getEmail());
+
+        LoginResponse response = new LoginResponse();
+
+        response.setId(user.getId());
+        response.setFullName(user.getFullName());
+        response.setEmail(user.getEmail());
+        response.setRole(user.getRole());
+        response.setToken(token);
+        response.setMessage("Login Successful");
+
+        return response;
     }
 
     // Get User By Id
