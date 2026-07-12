@@ -1,0 +1,270 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    background: #dbe7f3;
+}
+
+/* ===========================
+   Container
+=========================== */
+
+.register-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    background: linear-gradient(
+        135deg,
+        #d4e2ef 0%,
+        #dde8f3 30%,
+        #e8eff7 60%,
+        #f3f7fb 100%
+    );
+}
+
+/* ===========================
+   Card
+=========================== */
+
+.register-card {
+    width: 460px;
+    background: #fff;
+    border-radius: 16px;
+    padding: 35px;
+    border: 1px solid #dbe4ee;
+    box-shadow: 0 15px 40px rgba(32, 60, 90, 0.12);
+}
+
+/* ===========================
+   Logo
+=========================== */
+
+.logo {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: #2563eb;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    box-shadow: 0 10px 25px rgba(37, 99, 235, .25);
+}
+
+.register-card h1 {
+    text-align: center;
+    color: #2563eb;
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.register-card p {
+    text-align: center;
+    color: #64748b;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* ===========================
+   Form
+=========================== */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    color: #334155;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+    height: 48px;
+    padding: 0 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+    transition: .3s;
+}
+
+.form-group input:hover {
+    border-color: #94a3b8;
+}
+
+.form-group input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37,99,235,.15);
+}
+
+/* ===========================
+   Password
+=========================== */
+
+.password-box {
+    position: relative;
+}
+
+.password-box input {
+    width: 100%;
+    height: 48px;
+    padding: 0 45px 0 14px;
+}
+
+.eye-btn {
+    position: absolute;
+    top: 50%;
+    right: 14px;
+    transform: translateY(-50%);
+    width: auto;
+    height: auto;
+    border: none;
+    background: transparent;
+    color: #64748b;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.eye-btn:hover {
+    color: #2563eb;
+    background: transparent;
+}
+
+/* ===========================
+   Student Card
+=========================== */
+
+.role-group {
+    margin-bottom: 22px;
+}
+
+.role-group label {
+    display: block;
+    margin-bottom: 10px;
+    color: #334155;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.role-card {
+    border: 2px solid #2563eb;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    background: #eff6ff;
+}
+
+.role-card svg {
+    font-size: 34px;
+    color: #2563eb;
+    margin-bottom: 12px;
+}
+
+.role-card span {
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1e3a8a;
+    margin-bottom: 8px;
+}
+
+.role-card small {
+    display: block;
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* ===========================
+   Register Button
+=========================== */
+
+.register-btn {
+    width: 100%;
+    height: 52px;
+    margin-top: 25px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.register-btn:hover {
+    background: #1d4ed8;
+}
+
+/* ===========================
+   Login Link
+=========================== */
+
+.login-link {
+    margin-top: 22px;
+    text-align: center;
+    color: #64748b;
+    font-size: 14px;
+}
+
+.login-link span {
+    color: #2563eb;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.login-link span:hover {
+    text-decoration: underline;
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media (max-width: 500px) {
+
+    .register-card {
+        width: 100%;
+        padding: 25px;
+    }
+.error-message{
+    background:#fee2e2;
+    color:#b91c1c;
+    border:1px solid #fca5a5;
+    padding:12px;
+    border-radius:8px;
+    margin-bottom:15px;
+    font-size:14px;
+}
+
+.success-message{
+    background:#dcfce7;
+    color:#166534;
+    border:1px solid #86efac;
+    padding:12px;
+    border-radius:8px;
+    margin-bottom:15px;
+    font-size:14px;
+}
+}
