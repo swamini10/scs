@@ -235,7 +235,7 @@ function AdminDashboard() {
                       <td>
                         <button onClick={() => setSelectedComplaint(item)}>View</button>
                       </td>
-                    </tr>CORS issue solve 
+                    </tr>
                   ))}
                 </tbody>
               </table>
