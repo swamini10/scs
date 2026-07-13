@@ -36,21 +36,7 @@ function Sidebar() {
         </div>
       </div>
 
-      {/* Menu */}
-
-      <nav className="sidebar-menu">
-
-        <Link
-          to="/student"
-          className={location.pathname === "/student" ? "active" : ""}
-        >
-          <FaHome />
-          <span>Dashboard</span>
-        </Link>
-
       
-
-      </nav>
 
       {/* Bottom Profile */}
 
