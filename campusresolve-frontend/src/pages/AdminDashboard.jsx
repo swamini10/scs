@@ -19,8 +19,8 @@ function AdminDashboard() {
   const [selectedComplaint, setSelectedComplaint] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("ALL");
-  const [showAll, setShowAll] = useState(false);
-  const [pageSize] = useState(3);
+  const [page, setPage] = useState(1);
+  const [pageSize] = useState(5);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -101,9 +101,10 @@ function AdminDashboard() {
     });
   }, [complaints, searchTerm, statusFilter]);
 
-  const visibleComplaints = showAll
-    ? filteredComplaints
-    : filteredComplaints.slice(0, pageSize);
+  const totalPages = Math.max(1, Math.ceil(filteredComplaints.length / pageSize));
+  const safePage = Math.min(page, totalPages);
+  const startIndex = (safePage - 1) * pageSize;
+  const visibleComplaints = filteredComplaints.slice(startIndex, startIndex + pageSize);
 
   const handleStatusUpdate = async (targetStatus) => {
     if (!selectedComplaint) return;
@@ -199,10 +200,6 @@ function AdminDashboard() {
               <option value="RESOLVED">Resolved</option>
             </select>
 
-            <button className="toggle-btn" onClick={() => setShowAll(!showAll)}>
-              {showAll ? "Show Recent" : "Show All"}
-            </button>
-
           </div>
 
           <div className="complaint-container">
@@ -211,6 +208,7 @@ function AdminDashboard() {
             ) : visibleComplaints.length === 0 ? (
               <div className="empty-state">No complaints found for the selected filters.</div>
             ) : (
+              <>
               <table>
                 <thead>
                   <tr>
@@ -239,6 +237,29 @@ function AdminDashboard() {
                   ))}
                 </tbody>
               </table>
+
+              <div className="pagination-controls">
+                <button
+                  className="page-btn"
+                  onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+                  disabled={safePage === 1}
+                >
+                  Previous
+                </button>
+
+                <span className="page-info">
+                  Page {safePage} of {totalPages}
+                </span>
+
+                <button
+                  className="page-btn"
+                  onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
+                  disabled={safePage === totalPages}
+                >
+                  Next
+                </button>
+              </div>
+              </>
             )}
           </div>
 
