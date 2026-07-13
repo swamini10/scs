@@ -12,7 +12,7 @@ import com.campusresolve.service.ComplaintService;
 
 @RestController
 @RequestMapping("/api/complaints")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:5173")
 public class ComplaintController {
 
     @Autowired
