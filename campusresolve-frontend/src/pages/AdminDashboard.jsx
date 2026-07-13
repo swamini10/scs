@@ -225,7 +225,7 @@ function AdminDashboard() {
                 <tbody>
                   {visibleComplaints.map((item) => (
                     <tr key={item.id}>
-                      <td>#{item.id}</td>
+                      <td>{item.id}</td>
                       <td>{item.user?.fullName || "Unknown"}</td>
                       <td>{item.title}</td>
                       <td>
@@ -235,7 +235,7 @@ function AdminDashboard() {
                       <td>
                         <button onClick={() => setSelectedComplaint(item)}>View</button>
                       </td>
-                    </tr>
+                    </tr>CORS issue solve 
                   ))}
                 </tbody>
               </table>
