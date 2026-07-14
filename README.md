@@ -176,23 +176,31 @@ npm run dev
 Add screenshots here:
 
 * Login Page
+<img width="1920" height="1020" alt="Screenshot 2026-07-14 231304" src="https://github.com/user-attachments/assets/8fea997e-73f2-4f3b-8ba2-8ca7ecf0af16" />
+
 * Register Page
+  <img width="1920" height="1080" alt="Screenshot 2026-07-14 231221" src="https://github.com/user-attachments/assets/5148fd1e-c6fd-4bf0-8f59-e26029a0d37b" />
+<img width="1920" height="1080" alt="Screenshot 2026-07-14 231241" src="https://github.com/user-attachments/assets/511ee54e-6771-40d6-9d8e-9d462e75065f" />
+
 * Student Dashboard
+<img width="1920" height="1020" alt="Screenshot 2026-07-14 231322" src="https://github.com/user-attachments/assets/d152d7a9-2fb6-4a7d-9a6f-e031f5bbd36e" />
+  
 * Raise Complaint
+<img width="1920" height="1080" alt="Screenshot 2026-07-14 231337" src="https://github.com/user-attachments/assets/779bbed4-8676-4ed7-8263-bd519494bf81" />
+  
 * My Complaints
-* Admin Dashboard
-* Complaint Details
+<img width="1920" height="1080" alt="Screenshot 2026-07-14 231351" src="https://github.com/user-attachments/assets/6cbb4231-1196-4473-a337-3b7702e08a60" />
+
+* Admin Dashboard or Complaint Details
+<img width="1920" height="1080" alt="Screenshot 2026-07-14 231447" src="https://github.com/user-attachments/assets/cb1f9ba2-4168-4db4-a975-202bcca8d0d0" />
 
 ---
 
 ## 🔮 Future Enhancements
 
 * Email Notifications
-* Complaint Categories
 * File/Image Upload
-* Real-time Notifications
 * Analytics Dashboard
-* Export Reports (PDF/Excel)
 * Dark Mode
 
 ---
