@@ -4,6 +4,7 @@ CampusResolve is a full-stack web application that simplifies the process of rep
 
 ---
 
+
 ## 🚀 Features
 
 ### 👨‍🎓 Student Module
